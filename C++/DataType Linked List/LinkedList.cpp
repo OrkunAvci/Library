@@ -50,13 +50,37 @@ public:
         head= created;
     }
 
-    void insert(int data)
+    bool insert(int data)
     {
         struct NODE* created= createNode(data);
         struct NODE* curr= head;
-        while ( curr->next->data < created->data )  {	curr= curr->next;	}
-		created->next= curr->next;
-		curr->next= created;
+        while ( curr->next->data < created->data && curr != nullptr )  {	curr= curr->next;	}
+		if ( curr != nullptr )
+		{
+			created->next= curr->next;
+			curr->next= created;
+			return true;
+		}
+		return false;
     }
+
+	bool remove(int data)
+	{
+		struct NODE* curr;
+		struct NODE* prev;
+		curr= head;
+		while ( curr != nullptr && curr->data != data )
+		{
+			prev= curr;
+			curr= curr->next;
+		}
+		if ( curr != nullptr )
+		{
+			prev->next= curr->next;
+			delete curr;
+			return true;
+		}
+		return false;
+	}
 
 };
