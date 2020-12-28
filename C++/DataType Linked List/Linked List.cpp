@@ -7,8 +7,8 @@ private:
         struct NODE* next;
     };
     struct NODE* head;
-    struct NDOE* tail;
-    
+    struct NODE* tail;
+
 public:
     LinkedList()
     {
@@ -17,7 +17,19 @@ public:
 
     ~LinkedList()
     {
+        resetAll();
+    }
 
+    void resetAll()
+    {
+        struct NODE* curr= head;
+        while ( head != tail )
+        {
+            head= curr;
+            curr= head->next;
+            delete head;
+        }
+        delete head;
     }
 
 };
