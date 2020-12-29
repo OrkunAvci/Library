@@ -6,10 +6,10 @@ private:
         int data;
         struct NODE* next;
     };
-    struct NODE* head;
-    struct NODE* tail;
+    NODE* head;
+    NODE* tail;
 
-    struct NODE* createNode(int data)
+    NODE* createNode(int data)
     {
         struct NODE* created= new struct NODE;
         created->data= data;
@@ -52,6 +52,7 @@ public:
     bool insert(int data)
     {
         struct NODE* created= createNode(data);
+        if ( head == nullptr )  {   head= tail= created;    return true;    }
         struct NODE* curr= head;
         while ( curr->next->data < created->data && curr != nullptr )  {	curr= curr->next;	}
 		if ( curr != nullptr )
