@@ -8,6 +8,7 @@ private:
     };
     NODE* head;
     NODE* tail;
+    bool circular;
     bool sorted;
 
     NODE* createNode(int data)
@@ -15,12 +16,53 @@ private:
         struct NODE* created= new struct NODE;
         created->data= data;
         created->next= nullptr;
+        return created;
+    }
+
+    void reverseListRecursive(NODE* head, NODE* curr, NODE* prev)
+    {
+        if ( !circular && curr != tail )
+        {
+            reverseListRecursive(head, curr->next, curr);
+        }
+        if ( circular && curr != this->head )
+        {
+            reverseListRecursive(head, curr->next, curr);
+        }
+        curr->next= prev;
+    }
+
+    void updateLink(NODE* target, NODE* updated)
+    {
+        NODE* curr= head;
+        if (circular)
+        {
+            curr= (head->next != target) ? curr->next : curr;
+            while (curr != head && curr->next != target)
+            {
+                curr= curr->next;
+            }
+        }
+        else
+        {
+            while (curr != tail && curr->next != target)
+            {
+                curr= curr->next;
+            }
+        }
+        
+        if (curr->next == target)
+        {
+            curr->next= updated;
+        }
     }
 
 public:
 	LinkedList()
     {
         sorted= false;
+        circular= false;
+        head= tail= nullptr;
     }
 
     ~LinkedList()
@@ -30,7 +72,7 @@ public:
 
     void resetAll()
     {
-        struct NODE* curr= head;
+        NODE* curr= head;
         while ( head != tail )
         {
             head= curr;
@@ -42,36 +84,51 @@ public:
 
     void addTail(int data)
     {
-        struct NODE* created= createNode(data);
+        if (circular)   {   return;     }
+        NODE* created= createNode(data);
         tail->next= created;
+        tail= created;
+        head= (head != nullptr) ? head : tail;
     }
 
     void addHead(int data)
     {
-        struct NODE* created= createNode(data);
+        NODE* created= createNode(data);
         created->next= head;
         head= created;
+        tail= ( circular || tail == nullptr) ? head : tail;
     }
 
     bool insert(int data)
     {
-        struct NODE* created= createNode(data);
-        if ( head == nullptr )  {   head= tail= created;    return true;    }
-        struct NODE* curr= head;
-        while ( curr->next->data < created->data && curr != nullptr )  {	curr= curr->next;	}
-		if ( curr != nullptr )
-		{
-			created->next= curr->next;
-			curr->next= created;
-			return true;
-		}
-		return false;
+        if (!sorted)
+        {
+            addHead(data);  //  Or tail, your choice. But this function is for sorted lists.
+            return true;
+        }
+
+        NODE* created= createNode(data);
+        if ( head == nullptr )
+        {
+            head= tail= created;
+            return true;
+        }
+
+        NODE* curr= head;
+        while ( curr->next != nullptr && curr->next->data < created->data )
+        {
+            curr= curr->next;
+        }
+
+		created->next= curr->next;
+        curr->next= created;
+        return true;
     }
 
 	bool remove(int data)
 	{
-		struct NODE* curr;
-		struct NODE* prev;
+		NODE* curr;
+		NODE* prev;
 		curr= head;
 		while ( curr != nullptr && curr->data != data )
 		{
@@ -110,5 +167,30 @@ public:
         return control;
     }
 
+    void reserveList()
+    {
+        if (circular)
+        {
+            reverseListRecursive(this->head, this->head, this->head);
+        }
+        else
+        {
+            reverseListRecursive(this->head, this->head, nullptr);
+        }
+        NODE* temp= head;
+        head= tail;
+        tail= temp;
+    }
+
+    bool makeCircular()
+    {
+        if ( head == nullptr || tail == nullptr )
+        {
+            return false;
+        }
+        tail->next= head;
+        tail= nullptr;  //  Will no longer be used.
+        circular= true;
+    }
 
 };
