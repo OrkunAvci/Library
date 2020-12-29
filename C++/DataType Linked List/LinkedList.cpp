@@ -17,7 +17,6 @@ private:
     }
 
 public:
-
 	LinkedList(){}
 
     ~LinkedList()
