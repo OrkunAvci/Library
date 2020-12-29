@@ -8,6 +8,7 @@ private:
     };
     NODE* head;
     NODE* tail;
+    bool sorted;
 
     NODE* createNode(int data)
     {
@@ -17,7 +18,10 @@ private:
     }
 
 public:
-	LinkedList(){}
+	LinkedList()
+    {
+        sorted= false;
+    }
 
     ~LinkedList()
     {
@@ -81,6 +85,30 @@ public:
 			return true;
 		}
 		return false;
-	} 
+	}
+
+    bool exists(int data)
+    {
+        NODE* curr= head;
+        bool control= false;
+        if (sorted)
+        {
+            while ( curr != nullptr && curr->data < data )
+            {
+                curr= curr->next;
+            }
+            control= curr->data == data;
+        }
+        else
+        {
+            while ( curr != nullptr && curr->data != data )
+            {
+                curr= curr->next;
+            }
+            control= curr != nullptr;
+        }
+        return control;
+    }
+
 
 };
