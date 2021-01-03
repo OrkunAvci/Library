@@ -1,0 +1,16 @@
+C++ Functions for sort algorithms.
+Uses templates.
+
+Built-in function:
+	Swap(T* a, T* b);	Swaps two values.
+
+Linear Sort:
+	void linear_sort(T* ar, int size)	O(n2)
+
+Quick Sort:
+	void quick_sort(T* ar, int size)	// Recursive.
+	Size: Number of elements each function will work on.
+
+Merge Sort:
+	T* merge_sort(T* ar1, T*ar2, int size_of_ar1, size_of_ar2)	// Ar1 and Ar2 must be sorted themselves.
+	Returns a merged array consisting elements of both Ar1 and Ar2.

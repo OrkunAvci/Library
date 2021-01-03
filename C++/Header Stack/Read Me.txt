@@ -1,0 +1,16 @@
+C++ class for a Stack data type.
+All functions and variable names are lowercase.
+
+Private:
+	int Pointer:				Pointer to last saved value.
+	Template(default= int) *Stack:		Storage. Dynamicly allocated. Deleted in Destroyer.
+	int size:				Size of stack.
+
+	bool isEmpty()	:	Checks is stack is empty.
+	bool isFull()	:	Checks is stack is full.
+Public:
+	Constuctor(int StackSizeValue)
+	~Destroyer()
+	
+	Template(default= int) Pop()		:	Returns the value at Pointer and decrements Pointer. Returns -1 if stack is empty.
+	bool Push(Template(default= int) Value)	:	Saves value in the next socket of stack. Returns false if stack is full.

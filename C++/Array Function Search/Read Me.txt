@@ -1,0 +1,17 @@
+C++ functions for search algorithms.
+Vectors have been used.
+
+Binary Search:
+	int binary_search(T* ar, int size, T searchedValue)
+		Array must be sorted.
+		Returns index of searchedValue.
+		Returns -1 if not found.
+
+Linear Search:
+	vector<int> linear_search(T* ar, int size, T searchedValue)
+		Returned vector consists of indexes of all encounters of searchedValue troughtout the array.
+
+Pattern Matching:
+	vector<T> pattern_matching(vector<T> data, vector<T> pattern)
+		Vectors remember thier sizes therefore (..,int size,..) is not present.
+		Returned vector consists of indexes of start index of each matched pattern in data.

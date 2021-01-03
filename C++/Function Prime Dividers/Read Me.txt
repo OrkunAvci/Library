@@ -1,0 +1,6 @@
+C++ Function.
+
+Returns int** .
+
+Dividers are stored at 	result[0][0...] .
+Powers   are stored at 	result[1][0...] .

@@ -1,0 +1,18 @@
+Recursive Functions for Reversing a Linked List. C++ with templates.
+
+void reverse_linked_list(LinkNode* head, LinkNode* current, LinkNode* prev= NULL);
+
+Standalone function. Head is the pointer the first element of the list. Current is the node currently being worked on. Prev is short for previous and the pointer to the previous node. LinkNode is the data structure of linked list elements(see below for definition). Default assignment of Null on prev(if language permits it) will make calling the function easier.	[-- reverse_linked_list(head,head); --]
+
+LinkNode* reverse_linked_list(LinkNode* current, LinkNode* prev=NULL)
+
+Assignment version of the first function. All variables serve same purposes as before. Head is hidden inside the function itself and is returned when updated. Updated head must be assigned.	[-- head= reverse_linked_list(head); --]
+
+
+-----------------------
+Assumption of LinkNode:
+
+datatype structre LinkNode{
+	var data;
+	LinkNode* next;
+};

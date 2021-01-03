@@ -1,0 +1,5 @@
+File Extention Control:
+	is_filetype_valid(char* fileName, char* extentionCode)	// Also accepts ".XXX" input.
+	Controls end of fileName with extentionCode in decrementing order.
+	Returns true if extentionCode is consumed without any mismatches.
+	Return false if size of extentionCode is grater than size of fileName OR there is a mismatch in controls.

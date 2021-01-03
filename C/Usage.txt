@@ -1,0 +1,5 @@
+Directories are named like this:
+
+Input Type/Effected Element - Function/Algorithm Name
+
+These are compatiable with C.
