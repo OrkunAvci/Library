@@ -25,7 +25,7 @@ int binary_search(T* ar, int size, T searched)		// Array must be sorted.
 }
 
 <template T>
-std::vector<int> linear_search(T* ar, int size, T searched)
+std::vector<T> linear_search(T* ar, int size, T searched)
 {
 	std::vector<T> vec;
 	int v= 0;					// Index for result vector.
@@ -40,7 +40,7 @@ std::vector<int> linear_search(T* ar, int size, T searched)
 }
 
 <template T>
-std::vector<i> pattern_matching(std::vector<T> data, std::vector<T> searched)	// A copy of original one, usually used at string searching however this one is generalized.
+std::vector<T> pattern_matching(std::vector<T> data, std::vector<T> searched)	// A copy of original one, usually used at string searching however this one is generalized.
 {
 	std::vector<T> vec;
 	int i= searched.size()- 1, j, v= 0;			// I for data, J for searched, V for results vector.
