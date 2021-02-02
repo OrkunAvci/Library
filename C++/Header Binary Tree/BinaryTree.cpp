@@ -48,7 +48,7 @@ BinaryTreeNode* min_of_right(BinaryTreeNode* curr)
 	return curr;
 }
 
-void update_link(BinaryTreeNode* curr, BinaryTreeNode* updated, unsigned int offset)		//	For offset, 0: Parent, 1: Left, 2: Right.
+void update_link(BinaryTreeNode* curr, BinaryTreeNode* updated, unsigned int offset)		//	For offset--->, 0: Parent, 1: Left, 2: Right.
 {
 	if (curr == nullptr)	{	return;		}
 	*(curr + (offset* sizeof(BinaryTreeNode*)) = updated;
