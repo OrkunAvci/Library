@@ -1,4 +1,4 @@
-#include "manipulations.h"
+#include "bit_operations.h"
 
 template <class T>
 T shr(T var, T count)
@@ -16,11 +16,12 @@ template <class T>
 T rtr(T var, T count)
 {
 	T control = 1;
+	T addon = 1 << (sizeof(addon) * 8 - 1);
 	for (T i = 0; i < count; i++, control = 1)
 	{
 		control = control & var;
-		var = var << 1;
-		var += (control) ? 1 : 0;
+		var = var >> 1;
+		var += (control) ? addon : 0;
 	}
 }
 
@@ -28,12 +29,20 @@ template <class T>
 T rtl(T var, T count)
 {
 	T control = 1 << (sizeof(control) * 8 - 1);
+	T addon = 1;
 	for (T i = 0; i < count; i++, control = 1 << (sizeof(T) * 8 - 1))
 	{
 		control = control & var;
 		var = var << 1;
-		var += (control) ? 1 : 0;
+		var += (control) ? addon : 0;
 	}
+}
+
+template<class T>
+T add(T var1, T var2)	//	Full name is controlled_add(), a work around for overflow issues.
+{
+	T excess = (var1 & 1) + (var2 & 1);
+	return excess + shl( shr(var1, 1) + shr(var2, 1), 1);
 }
 
 template <class T>

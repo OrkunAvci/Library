@@ -2,7 +2,7 @@
 #ifndef __MATH_FUNCTIONS_H__
 #define __MATH_FUNCTIONS_H__
 
-#include "manipulations.h"
+#include "bit_operations.h"
 
 template <class T>
 T sigma_1(T);

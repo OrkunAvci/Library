@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,6 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,14 +126,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
-    <ClInclude Include="manipulations.h" />
+    <ClInclude Include="bit_operations.h" />
     <ClInclude Include="math_functions.h" />
+    <ClInclude Include="messageBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="constants.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="manipulations.cpp" />
+    <ClCompile Include="bit_operations.cpp" />
     <ClCompile Include="math_functions.cpp" />
+    <ClCompile Include="messageBlock.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
