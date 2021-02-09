@@ -98,7 +98,7 @@ public:
 					curr = curr->left;
 				}
 			}
-			else /* addon->data > curr->data */		//	This line is searchable with ctrl + f.
+			else /* addon->data > curr->data */
 			{
 				if (curr->right == nullptr)
 				{
