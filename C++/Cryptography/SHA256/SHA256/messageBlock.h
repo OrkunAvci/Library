@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "math_functions.h"
+
 class MessageBlock
 {
 private:
@@ -20,7 +22,7 @@ public:
 	void addNext(MessageBlock*);
 	MessageBlock* getNext();
 
-	unsigned int getData();
+	unsigned int* processBlock();
 };
 
 #endif // !__MESSAGE_BLOCK_H__

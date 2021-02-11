@@ -2,7 +2,6 @@
 
 MessageBlock::MessageBlock(std::string str)
 {
-	marker = 0;
 	for (unsigned int i = 0; i < str.size(); i++)
 	{
 		data[i / 4] += str[i];
@@ -35,7 +34,18 @@ MessageBlock * MessageBlock::getNext()
 	return nullptr;
 }
 
-unsigned int MessageBlock::getData()
+unsigned int* MessageBlock::processBlock()
 {
-	return data[marker++];
+	unsigned int* words = new unsigned int[64];
+	for (unsigned int i = 0; i < 16; i++)
+	{
+		words[i] = data[i];
+	}
+
+	for (unsigned int i = 16; i < 64; i++)
+	{
+		words[i] = add( add( sigma_1( words[i - 16] ), sigma_2( words[i - 2] ) ), add( sigma_3( words[i - 13] ), sigma_4( words[i - 7] ) ) );
+	}
+
+	return words;
 }
