@@ -12,15 +12,16 @@ void get_constants(unsigned int* output)
 						283, 293, 307, 311 };		//	64 in total.
 
 	
-	float helper;
-	float dump;
+	double helper;
+	//float dump;
 	for (unsigned int i = 0; i < 64; i++)
 	{
-		helper = (float)primes[i];
+		helper = (double)primes[i];
 		helper = cbrt(helper);
-		dump = 1.0;
+		helper *= pow(2, 32);
+		/*dump = 1.0;
 		helper = modf(helper, &dump);
-		helper = helper * pow(10, 9);
+		helper = helper * pow(10, 9);*/
 		output[i] = (int) helper;
 	}
 
