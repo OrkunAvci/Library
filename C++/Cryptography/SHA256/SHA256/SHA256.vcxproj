@@ -125,10 +125,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="constants.h" />
     <ClInclude Include="bit_operations.h" />
     <ClInclude Include="math_functions.h" />
     <ClInclude Include="messageBlock.h" />
+    <ClInclude Include="constants.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="constants.cpp" />
