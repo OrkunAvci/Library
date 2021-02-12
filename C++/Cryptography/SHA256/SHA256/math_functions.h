@@ -4,16 +4,16 @@
 
 #include "bit_operations.h"
 
-template <class T>
-T sigma_1(T);
 
-template <class T>
-T sigma_2(T);
+unsigned int sigma_1(unsigned int);
 
-template <class T>
-T sigma_3(T);
 
-template <class T>
-T sigma_4(T);
+unsigned int sigma_2(unsigned int);
+
+
+unsigned int sigma_3(unsigned int);
+
+
+unsigned int sigma_4(unsigned int);
 
 #endif // !__MATH_FUNCTIONS_H__

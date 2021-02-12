@@ -10,9 +10,8 @@ MessageBlock::MessageBlock(std::string str)
 	next = nullptr;
 }
 
-MessageBlock::MessageBlock(std::string str, unsigned int d14, unsigned int d15)
+MessageBlock::MessageBlock(std::string str, unsigned int d14, unsigned int d15) : MessageBlock(str)
 {
-	MessageBlock::MessageBlock(str);
 	//	These are the size(s) of the entire message.
 	data[14] = d14;
 	data[15] = d15;
@@ -25,13 +24,13 @@ MessageBlock::~MessageBlock()
 
 void MessageBlock::addNext(MessageBlock* next)
 {
-	if (next == nullptr)	{	this->next = next;	}
-	else					{	next->addNext(next);	}
+	if (this->next == nullptr)	{	this->next = next;	}
+	else						{	next->addNext(next);	}
 }
 
-MessageBlock * MessageBlock::getNext()
+MessageBlock* MessageBlock::getNext()
 {
-	return nullptr;
+	return this->next;
 }
 
 unsigned int* MessageBlock::processBlock()

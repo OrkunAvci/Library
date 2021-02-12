@@ -1,65 +1,61 @@
 #include "bit_operations.h"
 
-template <class T>
-T shr(T var, T count)
+unsigned int shr(unsigned int var, unsigned int count)
 {
 	return (var >> count);
 }
 
-template <class T>
-T shl(T var, T count)
+unsigned int shl(unsigned int var, unsigned int count)
 {
 	return (var << count);
 }
 
-template <class T>
-T rtr(T var, T count)
+unsigned int rtr(unsigned int var, unsigned int count)
 {
-	T control = 1;
-	T addon = 1 << (sizeof(addon) * 8 - 1);
-	for (T i = 0; i < count; i++, control = 1)
+	unsigned int control = 1;
+	unsigned int addon = 1 << (sizeof(addon) * 8 - 1);
+	for (unsigned int i = 0; i < count; i++, control = 1)
 	{
 		control = control & var;
 		var = var >> 1;
 		var += (control) ? addon : 0;
 	}
+	return var;
 }
 
-template <class T>
-T rtl(T var, T count)
+unsigned int rtl(unsigned int var, unsigned int count)
 {
-	T control = 1 << (sizeof(control) * 8 - 1);
-	T addon = 1;
-	for (T i = 0; i < count; i++, control = 1 << (sizeof(T) * 8 - 1))
+	unsigned int control = 1 << (sizeof(control) * 8 - 1);
+	unsigned int addon = 1;
+	for (unsigned int i = 0; i < count; i++, control = 1 << (sizeof(unsigned int) * 8 - 1))
 	{
 		control = control & var;
 		var = var << 1;
 		var += (control) ? addon : 0;
 	}
+	return var;
 }
 
-template<class T>
-T add(T var1, T var2)	//	Full name is controlled_add(), a work around for overflow issues.
+unsigned int add(unsigned int var1, unsigned int var2)	//	Full name is controlled_add(), a work around for overflow issues.
 {
-	T excess = (var1 & 1) + (var2 & 1);
+	unsigned int excess = (var1 & 1) + (var2 & 1);
 	return excess + shl( shr(var1, 1) + shr(var2, 1), 1);
 }
 
-template <class T>
-T maj(T var1, T var2, T var3)
+
+unsigned int maj(unsigned int var1, unsigned int var2, unsigned int var3)
 {
 	//	Majority bit value among three, for each bit.
 	return (var1 & var2) | (var1 & var3) | (var2 & var3);
 }
 
-template <class T>
-T cho(T var1, T var2, T var3)
+unsigned int cho(unsigned int var1, unsigned int var2, unsigned int var3)
 {
-	T output = 0;
-	for (T filter = 1; filter != 0; shl(filter, 1))
+	unsigned int output = 0;
+	for (unsigned int filter = 1; filter != 0; filter = shl(filter, 1))
 	{
 		//	To determine which variable's bit will be chosen to copy over, use var1's bit.
-		if (filter && var1)
+		if ( (filter & var1) != 0 )
 		{
 			output = output ^ (filter & var3);
 		}

@@ -5,5 +5,6 @@
 #include <cmath>
 
 void get_constants(unsigned int*);
+void initial_hash(unsigned int*);
 
 #endif // !__CONSTANTS_H__

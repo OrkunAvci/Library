@@ -13,16 +13,32 @@ void get_constants(unsigned int* output)
 
 	
 	double helper;
-	//float dump;
+	double dump;
 	for (unsigned int i = 0; i < 64; i++)
 	{
 		helper = (double)primes[i];
 		helper = cbrt(helper);
-		helper *= pow(2, 32);
-		/*dump = 1.0;
+		dump = 1.0;
 		helper = modf(helper, &dump);
-		helper = helper * pow(10, 9);*/
+		helper = helper * 1000000000;	//	helper * pow(10,9)
 		output[i] = (int) helper;
 	}
 
+}
+
+void initial_hash(unsigned int* output)
+{
+	unsigned int primes[] =	{ 2, 3, 5, 7, 11, 13, 17, 19 };		//	8 in total.
+
+	double helper;
+	double dump;
+	for (unsigned int i = 0; i < 8; i++)
+	{
+		helper = (double)primes[i];
+		helper = sqrt(helper);
+		dump = 1.0;
+		helper = modf(helper, &dump);
+		helper = helper * 1000000000;	//	helper * pow(10,9)
+		output[i] = (int)helper;
+	}
 }
