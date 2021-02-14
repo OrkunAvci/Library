@@ -26,8 +26,16 @@ bool Queue<T>::enqueue(T addon)
 	created->data = addon;
 	created->next = nullptr;
 
-	tail->next = created;
-	tail = tail->next;;
+	if (head == nullptr)
+	{
+		head = tail = created;
+	}
+	else
+	{
+		tail->next = created;
+		tail = tail->next;;
+	}
+	
 	return true;
 }
 
