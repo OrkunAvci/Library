@@ -17,8 +17,8 @@ private:
 	bool sorted;
 
 	NODE* createNode(T);
-	void reverseListRecursive(NODE* head, NODE* curr, NODE* prev);
-	void updateLink(NODE* target, NODE* updated);
+	void reverseListRecursive(NODE*, NODE*, NODE*);
+	void updateLink(NODE*, NODE*);
 
 public:
 	LinkedList();
