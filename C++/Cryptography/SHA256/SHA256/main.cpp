@@ -45,7 +45,7 @@ int main()
 	//	Input string:
 	string input_str;
 	cout << "Enter input: ";
-	cin >> input_str;
+	getline(cin, input_str);
 
 	//	Input string into blocks:
 	string sub_str = "";
@@ -58,12 +58,8 @@ int main()
 	sub_str = input_str.substr( (input_str.size() / 64) * 64, input_str.size() );
 	blocks->addNext( new MessageBlock(sub_str, input_str.size() / UINT32_MAX, input_str.size() % UINT32_MAX) );
 
-	//	Delete the first empty block.
-	MessageBlock* next = blocks->getNext();
-	delete blocks;
-	blocks = next;
-
 	//	Hash every block:
+	MessageBlock* next;
 	unsigned int* hash_out = new unsigned int[8];
 	initial_hash(hash_out);
 	unsigned int* constants = new unsigned int[64];
@@ -77,6 +73,7 @@ int main()
 	}
 
 	//	Output:
+	cout << endl << "Output= ";
 	stringstream str_stream;
 	for (unsigned int i = 0; i < 8;i++)
 	{
