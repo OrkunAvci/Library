@@ -12,16 +12,18 @@ private:
 		BinaryTree* right;
 	};
 	NODE* root;
-	bool sorted;
 
+	void updateLink(NODE*, NODE*, NODE*);
 
 public:
 	BinaryTree();
 	~BinaryTree();
 
-	void add(T);		//	Unsorted function.
-	void insert(T);		//	Sorted function.
+	void insert(T);
+	void insert(NODE*, NODE*);
 	void remove(T);
+	void clear(NODE*);
 
+	bool exists(T);
 };
 
