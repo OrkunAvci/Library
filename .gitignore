@@ -257,6 +257,7 @@ paket-files/
 .cr/
 
 # Python Tools for Visual Studio (PTVS)
+Phyton/Learning/Session 1/venv/*
 __pycache__/
 *.pyc
 C++/Class Tree/Two-Three Tree/Two-Three Tree/TwoThreeTree.h
