@@ -1,5 +1,7 @@
 import random as rand
 
+#	Taken from https://jsonplaceholder.typicode.com/posts. Modified.
+#	Colapse this in your IDE.
 items = [
   {
     "donatorId": 1,
@@ -602,7 +604,6 @@ items = [
     "decription": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
   }
 ]
-#	Taken from https://jsonplaceholder.typicode.com/posts. Modified.
 
 def bid():
 	print()
