@@ -17,7 +17,7 @@ class deck:
 			self.cards.append({"type": type, "name": "Jack", "value": 10})
 
 	def draw(self):
-		drawn = self.cards[rand.randrange(0, len(self.cards))]
+		drawn = self.cards.pop(rand.randrange(0, len(self.cards)))
 		print(f"{drawn['name']} of {drawn['type']} has been drawn!")
 		return drawn
 
